@@ -75,6 +75,15 @@ template '/etc/init.d/hub' do
   group 'root'
   cookbook node['aet']['seleniumgrid']['hub']['src_cookbook']['init_script']
   mode '0755'
+end
+
+# Create systemd unit
+template '/etc/systemd/system/hub.service' do
+  source 'etc/systemd/system/hub.service.erb'
+  owner 'root'
+  group 'root'
+  mode '0664'
+  cookbook node['aet']['browsermob']['src_cookbook']['init_script']
 
   notifies :restart, 'service[hub]', :delayed
 end

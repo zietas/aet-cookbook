@@ -22,8 +22,8 @@
 # Install all required X packages
 [
   'X Window System',
-  'Desktop',
-  'General Purpose Desktop',
+  'GNOME Desktop',
+  'Graphical Administration Tools',
   'Fonts'
 ].each do |p_group|
   execute "Installing: #{p_group}" do

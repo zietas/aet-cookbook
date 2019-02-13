@@ -70,6 +70,17 @@ template '/etc/init.d/xvfb' do
   notifies :restart, 'service[xvfb]', :immediately
 end
 
+# Create systemd unit
+template '/etc/systemd/system/xvfb.service' do
+  source 'etc/systemd/system/xvfb.service.erb'
+  owner 'root'
+  group 'root'
+  mode '0664'
+  cookbook node['aet']['browsermob']['src_cookbook']['init_script']
+
+  notifies :restart, 'service[xvfb]', :delayed
+end
+
 # Start and enable Xvfb service
 service 'xvfb' do
   supports status: true, restart: true

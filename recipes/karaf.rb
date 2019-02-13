@@ -120,6 +120,15 @@ template '/etc/init.d/karaf' do
   group 'root'
   cookbook node['aet']['karaf']['src_cookbook']['init_script']
   mode '0755'
+end
+
+# Create systemd unit
+template '/etc/systemd/system/karaf.service' do
+  source 'etc/systemd/system/karaf.service.erb'
+  owner 'root'
+  group 'root'
+  mode '0664'
+  cookbook node['aet']['browsermob']['src_cookbook']['init_script']
 
   notifies :restart, 'service[karaf]', :delayed
 end

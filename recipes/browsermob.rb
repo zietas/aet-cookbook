@@ -105,6 +105,15 @@ template '/etc/init.d/browsermob' do
   group 'root'
   cookbook node['aet']['browsermob']['src_cookbook']['init_script']
   mode '0755'
+end
+
+# Create systemd unit
+template '/etc/systemd/system/browsermob.service' do
+  source 'etc/systemd/system/browsermob.service.erb'
+  owner 'root'
+  group 'root'
+  mode '0664'
+  cookbook node['aet']['browsermob']['src_cookbook']['init_script']
 
   notifies :restart, 'service[browsermob]', :delayed
 end

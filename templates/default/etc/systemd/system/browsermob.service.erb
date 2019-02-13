@@ -1,0 +1,18 @@
+[Unit]
+SourcePath=/etc/init.d/browsermob
+Description=browsermob
+After=remote-fs.target systemd-journald-dev-log.socket
+
+[Service]
+Type=forking
+Restart=no
+TimeoutSec=5min
+IgnoreSIGPIPE=no
+KillMode=process
+GuessMainPID=no
+RemainAfterExit=yes
+ExecStart=/etc/init.d/browsermob start
+ExecStop=/etc/init.d/browsermob stop
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,18 @@
+[Unit]
+SourcePath=/etc/init.d/hub
+Description=hub
+After=remote-fs.target systemd-journald-dev-log.socket
+
+[Service]
+Type=forking
+Restart=no
+TimeoutSec=5min
+IgnoreSIGPIPE=no
+KillMode=process
+GuessMainPID=no
+RemainAfterExit=yes
+ExecStart=/etc/init.d/hub start
+ExecStop=/etc/init.d/hub stop
+
+[Install]
+WantedBy=multi-user.target

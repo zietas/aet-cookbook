@@ -14,4 +14,10 @@
       ProxyPassMatch http://<%= node['aet']['apache']['karaf_ip'] %>:<%= node['aet']['karaf']['web_port'] %>/$1
     </LocationMatch>
 
+    <Directory "/opt/aet/apache/aet_reports/current">
+       DirectoryIndex report.html
+       Options FollowSymLinks
+       AllowOverride All
+       Require all granted
+   </Directory>
 </VirtualHost>

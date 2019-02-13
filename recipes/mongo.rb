@@ -21,3 +21,11 @@
 
 # Install MongoDB using supermarket cookbook
 include_recipe 'sc-mongodb::default'
+
+# create dir for systemctl pid
+directory node['aet']['mongodb']['service']['pid_dir'] do
+  owner 'mongod'
+  group 'mongod'
+  mode '0755'
+  action :create
+end

@@ -20,4 +20,3 @@
 #
 default['mongodb']['package_version'] = '3.2.22'
 default['mongodb']['config']['mongod']['storage']['dbPath'] = '/opt/aet/mongodb/db'
-default['mongodb']['service']['pid_dir'] = '/var/run/mongodb'

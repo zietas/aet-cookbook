@@ -22,10 +22,13 @@
 # Install MongoDB using supermarket cookbook
 include_recipe 'sc-mongodb::default'
 
-# create dir for systemctl pid
-directory node['aet']['mongodb']['service']['pid_dir'] do
-  owner 'mongod'
-  group 'mongod'
-  mode '0755'
-  action :create
+# create for systemctl - directory resource was not working at all for some reason ...
+execute 'create /var/run/mongodb' do
+  command "mkdir mongodb"
+  cwd '/var/run'
+  user 'mongod'
+  group 'root'
+  not_if do
+    ::File.exist?('/var/run/mongodb')
+  end
 end

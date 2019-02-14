@@ -66,8 +66,6 @@ template '/etc/init.d/xvfb' do
   group 'root'
   cookbook node['aet']['xvfb']['src_cookbook']['init_script']
   mode '0755'
-
-  notifies :restart, 'service[xvfb]', :immediately
 end
 
 # Create systemd unit

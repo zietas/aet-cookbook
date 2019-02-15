@@ -15,6 +15,6 @@ template '/etc/yum.repos.d/google-chrome.repo' do
 end
 
 package 'google-chrome-stable' do
-  version node['aet']['chrome']['veresion']
+  version node['aet']['chrome']['version']
   action :install
 end

@@ -14,7 +14,8 @@ template '/etc/yum.repos.d/google-chrome.repo' do
   mode '0644'
 end
 
-package 'google-chrome-stable' do
+yum_package 'google-chrome-stable' do
   version node['aet']['chrome']['version']
   action :install
+  flush_cache [ :before ]
 end

@@ -1,0 +1,18 @@
+[Unit]
+SourcePath=/etc/init.d/activemq
+Description=activemq
+After=remote-fs.target systemd-journald-dev-log.socket
+
+[Service]
+Type=forking
+Restart=no
+TimeoutSec=5min
+IgnoreSIGPIPE=no
+KillMode=process
+GuessMainPID=no
+RemainAfterExit=yes
+ExecStart=/etc/init.d/activemq start
+ExecStop=/etc/init.d/activemq stop
+
+[Install]
+WantedBy=multi-user.target

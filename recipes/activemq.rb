@@ -160,6 +160,18 @@ template "#{node['aet']['activemq']['root_dir']}/current"\
   notifies :restart, 'service[activemq]', :delayed
 end
 
+# Create systemd unit
+template '/etc/systemd/system/activemq.service' do
+  source 'etc/systemd/system/activemq.service.erb'
+  owner 'root'
+  group 'root'
+  mode '0664'
+  cookbook node['aet']['activemq']['src_cookbook']['init_script']
+
+  notifies :restart, 'service[activemq]', :delayed
+end
+
+
 # Start and enable ActiveMQ service
 service 'activemq' do
   supports restart: true, status: true

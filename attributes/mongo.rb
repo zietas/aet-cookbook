@@ -18,5 +18,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-default['mongodb']['package_version'] = '3.2.22'
+default['mongodb']['package_version'] = '3.6.11'
 default['mongodb']['config']['mongod']['storage']['dbPath'] = '/opt/aet/mongodb/db'
